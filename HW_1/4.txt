@@ -1,0 +1,14 @@
+[dbokach@localhost ~]$ touch file_name{1..3}.md
+[dbokach@localhost ~]$ ls
+dir1           file_name2.md  lec1_frag4_current_time.py  Shakespeare
+file_name1.md  file_name3.md  out.txt                     shakespeare.tar.gz
+
+[dbokach@localhost ~]$ mv file_name1{.md,.textdoc}
+[dbokach@localhost ~]$ mv file_name2{.md,}
+[dbokach@localhost ~]$ mv file_name3.md{,.latest}
+[dbokach@localhost ~]$ mv file_name1.{textdoc,txt}
+
+[dbokach@localhost ~]$ ls
+dir1            file_name3.md.latest        Shakespeare
+file_name1.txt  lec1_frag4_current_time.py  shakespeare.tar.gz
+file_name2      out.txt
