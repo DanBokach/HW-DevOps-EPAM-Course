@@ -1,0 +1,6 @@
+{} expansion is a bash / zsh feature, as such we need to explicitly run it thru any of these shells, in your case would be:
+
+[dbokach@localhost ~]$ a=1
+[dbokach@localhost ~]$ b=3
+[dbokach@localhost ~]$ echo file{$a..$b} | xargs -I@ bash -c 'echo @'
+file1 file2 file3

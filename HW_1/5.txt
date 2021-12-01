@@ -1,0 +1,8 @@
+[dbokach@localhost ~]$ cd /mnt
+
+[dbokach@localhost mnt]$ cd - # If my previous location was home directory.
+[dbokach@localhost mnt]$ cd
+[dbokach@localhost mnt]$ cd ../home/dbokach
+[dbokach@localhost mnt]$ cd /home/dbokach
+[dbokach@localhost mnt]$ cd ~
+[dbokach@localhost mnt]$ cd ~dbokach

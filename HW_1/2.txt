@@ -1,0 +1,36 @@
+[dbokach@localhost ~]$ find /usr/share/man -type f -name "*help*"
+/usr/share/man/man1/help.1.gz
+/usr/share/man/man5/firewalld.helper.5.gz
+/usr/share/man/man8/mkhomedir_helper.8.gz
+/usr/share/man/man8/pwhistory_helper.8.gz
+/usr/share/man/man8/ssh-pkcs11-helper.8.gz
+
+[dbokach@localhost ~]$ find /usr/share/man -type f -name "conf*"
+/usr/share/man/man5/config.5ssl.gz
+/usr/share/man/man5/config-util.5.gz
+
+[dbokach@localhost ~]$ ls
+dir1  lec1_frag4_current_time.py  out.txt  Shakespeare  shakespeare.tar.gz
+[dbokach@localhost ~]$ touch test.txt
+[dbokach@localhost ~]$ ls
+dir1                        out.txt      shakespeare.tar.gz
+lec1_frag4_current_time.py  Shakespeare  test.txt
+[dbokach@localhost ~]$ find . -name "test.txt" -exec rm -rf '{}' \;
+[dbokach@localhost ~]$ ls
+dir1  lec1_frag4_current_time.py  out.txt  Shakespeare  shakespeare.tar.gz
+
+Find command has flag "-exec" that allows to execute something on file/dirs. There are many ways to execute commands using "-exec" flag, here is man output for this flag:
+ Execute  command;  true  if  0  status is returned.  All following
+              arguments to find are taken to be arguments to the  command  until
+              an  argument consisting of `;' is encountered.  The string `{}' is
+              replaced by the current file name being  processed  everywhere  it
+              occurs  in  the  arguments  to  the command, not just in arguments
+              where it is alone, as in some versions of  find.   Both  of  these
+              constructions  might  need to be escaped (with a `\') or quoted to
+              protect them from expansion by the shell.  See the  EXAMPLES  sec‐
+              tion  for  examples of the use of the -exec option.  The specified
+              command is run once for each matched file.  The  command  is  exe‐
+              cuted  in the starting directory.   There are unavoidable security
+              problems surrounding use of the -exec action; you should  use  the
+              -execdir option instead.
+Also there is "-delete" flag that allows to delete files.

@@ -1,0 +1,76 @@
+[dbokach@localhost task6]$ mkdir -p new in-process/tread{0..2} processed
+[dbokach@localhost task6]$ tree
+.
+├── in-process
+│   ├── tread0
+│   ├── tread1
+│   └── tread2
+├── new
+└── processed
+
+6 directories, 0 files
+
+[dbokach@localhost task6]$ touch new/data{00..99}
+[dbokach@localhost task6]$ cp new/data{00..33} in-process/tread0
+[dbokach@localhost task6]$ cp new/data{34..66} in-process/tread1
+[dbokach@localhost task6]$ cp new/data{67..99} in-process/tread2
+[dbokach@localhost task6]$ ls in-process/tread0 in-process/tread1 in-process/tread2
+in-process/tread0:
+data00  data05  data10  data15  data20  data25  data30
+data01  data06  data11  data16  data21  data26  data31
+data02  data07  data12  data17  data22  data27  data32
+data03  data08  data13  data18  data23  data28  data33
+data04  data09  data14  data19  data24  data29
+
+in-process/tread1:
+data34  data39  data44  data49  data54  data59  data64
+data35  data40  data45  data50  data55  data60  data65
+data36  data41  data46  data51  data56  data61  data66
+data37  data42  data47  data52  data57  data62
+data38  data43  data48  data53  data58  data63
+
+in-process/tread2:
+data67  data72  data77  data82  data87  data92  data97
+data68  data73  data78  data83  data88  data93  data98
+data69  data74  data79  data84  data89  data94  data99
+data70  data75  data80  data85  data90  data95
+data71  data76  data81  data86  data91  data96
+
+[dbokach@localhost task6]$ mv in-process/* processed/
+[dbokach@localhost task6]$ ls in-process processed/tread0 processed/tread1 processed/tread2
+in-process:
+
+processed/tread0:
+data00  data05  data10  data15  data20  data25  data30
+data01  data06  data11  data16  data21  data26  data31
+data02  data07  data12  data17  data22  data27  data32
+data03  data08  data13  data18  data23  data28  data33
+data04  data09  data14  data19  data24  data29
+
+processed/tread1:
+data34  data39  data44  data49  data54  data59  data64
+data35  data40  data45  data50  data55  data60  data65
+data36  data41  data46  data51  data56  data61  data66
+data37  data42  data47  data52  data57  data62
+data38  data43  data48  data53  data58  data63
+
+processed/tread2:
+data67  data72  data77  data82  data87  data92  data97
+data68  data73  data78  data83  data88  data93  data98
+data69  data74  data79  data84  data89  data94  data99
+data70  data75  data80  data85  data90  data95
+data71  data76  data81  data86  data91  data96
+
+To compare number of files in new and processed folders it was decided to write small bash script:
+
+#!/bin/bash
+
+wc1=$(find /home/dbokach/task6/new -type f | wc -l) #In this variable we count number of files in new folder.
+wc2=$(find /home/dbokach/task6/processed -type f | wc -l) #In this variable we count number of files in processed folder.
+
+if [ $wc1 -eq $wc2 ] #If number of files in new folder will be equal to number of files in processed folder then files in new folder will be deleted.
+	then
+		echo "deleting files in new folder"
+		rm -r /home/dbokach/task6/new/*
+fi
+

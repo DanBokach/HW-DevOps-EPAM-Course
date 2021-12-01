@@ -1,0 +1,16 @@
+[dbokach@localhost ~]$ head -7 /etc/yum.conf
+[main]
+cachedir=/var/cache/yum/$basearch/$releasever
+keepcache=0
+debuglevel=2
+logfile=/var/log/yum.log
+exactarch=1
+obsoletes=1
+
+[dbokach@localhost ~]$ tail -2 /etc/fstab
+UUID=1a8fc334-17da-41ef-b0a8-7c6cf17ce545 /boot                   xfs     defaults        0 0
+/dev/mapper/centos-swap swap                    swap    defaults        0 0
+
+[dbokach@localhost ~]$ head -500 /etc/yum.conf | wc -l
+26
+It will output number of lines that the file consists and nothing more.
